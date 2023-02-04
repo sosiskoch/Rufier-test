@@ -1,1 +1,3 @@
 # kivy
+
+pip install kivymd
