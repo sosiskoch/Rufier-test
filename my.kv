@@ -6,12 +6,18 @@
         MDLabel:
             text: 'Отдохните и измерьте пульс 15 секунд'
             halign: 'center'
+        MDTextField:
+            id: p1_field
+            hint_text: "Введите Ваш пульс"
+            pos_hint: {"center_x": .5}
+            size_hint_x: .5
         MDRaisedButton:
             text: 'Далее'
             font_size: '40sp'
             size_hint: 0.5, None
             pos_hint: {'center_x': 0.5}
             on_press:
+                root.move_next()
                 app.sm.transition.direction = 'left'
                 app.sm.current = 'Screen2'
 
@@ -40,12 +46,18 @@
         MDLabel:
             text: 'Измерьте пульс в течение 15 секунд'
             halign: 'center'
+        MDTextField:
+            id: p2_field
+            hint_text: "Введите Ваш пульс"
+            pos_hint: {"center_x": .5}
+            size_hint_x: .5
         MDRaisedButton:
             text: 'Далее'
             font_size: '40sp'
             size_hint: 0.5, None
             pos_hint: {'center_x': 0.5}
             on_press:
+                root.move_next()
                 app.sm.transition.direction = 'left'
                 app.sm.current = 'Screen4'
 
@@ -74,12 +86,18 @@
         MDLabel:
             text: 'Измерьте пульс в течение 15 секунд'
             halign: 'center'
+        MDTextField:
+            id: p3_field
+            hint_text: "Введите Ваш пульс"
+            pos_hint: {"center_x": .5}
+            size_hint_x: .5
         MDRaisedButton:
             text: 'Далее'
             font_size: '40sp'
             size_hint: 0.5, None
             pos_hint: {'center_x': 0.5}
             on_press:
+                root.move_next()
                 app.sm.transition.direction = 'left'
                 app.sm.current = 'Screen6'
 
@@ -89,6 +107,7 @@
         padding: '8sp'
         spacing: '8sp'
         MDLabel:
+            id: result_label
             text: 'Ваш результат'
             halign: 'center'
         MDRaisedButton:
