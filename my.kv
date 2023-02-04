@@ -1,19 +1,33 @@
 <Screen1>:
     BoxLayout:
+        orientation: 'vertical'
+        padding: '8sp'
+        spacing: '8sp'
         MDLabel:
             text: 'Привет'
+            halign: 'center'
         MDRaisedButton:
             text: 'Далее'
             font_size: '40sp'
-            size_hint: 0.5 None
+            size_hint: 0.5, None
+            pos_hint: {'center_x': 0.5}
+            on_press:
+                app.sm.transition.direction = 'left'
+                app.sm.current = 'Screen2'
 
 <Screen2>:
     BoxLayout:
+        orientation: 'vertical'
+        padding: '8sp'
+        spacing: '8sp'
         MDLabel:
             text: 'Пока'
+            halign: 'center'
         MDRaisedButton:
             text: 'Назад'
             font_size: '40sp'
-            size_hint: 0.5 None
-            
-    
+            size_hint: 0.5, None
+            pos_hint: {'center_x': 0.5}
+            on_press:
+                app.sm.transition.direction = 'right'
+                app.sm.current = 'Screen1' 
