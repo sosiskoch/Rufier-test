@@ -1,10 +1,30 @@
+<Screen01>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: '8sp'
+        spacing: '8sp'
+        MDLabel:
+            text:'Данное приложение позволит вам с помощью теста Руфье \n провести первичную диагностику вашего здоровья.\n Проба Руфье представляет собой нагрузочный комплекс, \n предназначенный для оценки работоспособности сердца при физической нагрузке.'
+            halign: 'center'
+        MDRaisedButton:
+            text: 'Начать'
+            font_size: '40sp'
+            size_hint: 0.5, None
+            pos_hint: {'center_x': 0.5}
+            on_press:
+                root.move_next()
+
 <Screen0>:
     BoxLayout:
         orientation: 'vertical'
         padding: '8sp'
         spacing: '8sp'
         MDLabel:
-            text: 'Сколько вам лет?'
+            text: 'Шаг 1 из 6'
+            halign: 'center'
+            font_size: "16sp"
+        MDLabel:
+            text:'Сколько вам лет?'
             halign: 'center'
         MDTextField:
             id: age_field
@@ -23,20 +43,22 @@
                 root.move_next()
 
 <Screen1>:
-    on_enter: 
-        root.ids.countdown1.start()
     BoxLayout:
         orientation: 'vertical'
         padding: '8sp'
         spacing: '8sp'
         MDLabel:
-            text: 'Измерьте пульс в течение 15 секунд'
+            text: 'Шаг 2 из 6'
+            halign: 'center'
+            font_size: "16sp"
+        MDLabel:
+            text: 'Измерьте пульс в течение 15 секунд. \n Результат запишите в соответствующее поле.'
             halign: 'center'
         Countdown:
             id: countdown1
-            text: '15'
+            text: '10'
             halign: 'center'
-            font_size: '50sp'
+            font_size: '30sp'
             on_is_done:
                 root.ids.btn_next.disabled = False
         MDTextField:
@@ -49,13 +71,12 @@
             size_hint_x: .5
         MDRaisedButton:
             id: btn_next
-            text: 'Далее'
-            font_size: '40sp'
+            text: 'Старт'
+            font_size: '25sp'
             size_hint: 0.5, None
             pos_hint: {'center_x': 0.5}
-            disabled: True
             on_press:
-                root.move_next()
+                root.do_start()
 
 <Screen2>:
     BoxLayout:
@@ -63,26 +84,45 @@
         padding: '8sp'
         spacing: '8sp'
         MDLabel:
-            text: 'Сделайте 30 приседаний за 45 секунд'
+            text: 'Шаг 3 из 6'
             halign: 'center'
-        MDRaisedButton:
-            text: 'Далее'
-            font_size: '40sp'
-            size_hint: 0.5, None
-            pos_hint: {'center_x': 0.5}
-            on_press:
-                app.sm.transition.direction = 'left'
-                app.sm.current = 'Screen3' 
-
+        MDLabel:
+            text: "Выполните 30 приседаний за 45 секунд"
+            halign: "center"
+            font_size: "20"
+        BoxLayout:
+            Countdown:
+                id: countdown1
+                text: "45"
+                font_size: "30sp"
+                halign: "center"
+                on_is_done:
+                    root.ids.btn_next.disabled = False
+                    root.anim.stop(root.ids.btn_sit)
+            MDRoundFlatButton:
+                id: btn_sit
+                pos_hint: {"center_x": 0}
+                text: " "
+            MDRaisedButton:
+                id: btn_next
+                text: "Старт"
+                font_size: "25sp"
+                size_hint: 0.5, None
+                pos_hint: {'center_x': 0.5}
+                on_press:
+                    root.do_start()
+                    
 <Screen3>:
-    on_enter: 
-        root.ids.countdown1.start()
     BoxLayout:
         orientation: 'vertical'
         padding: '8sp'
         spacing: '8sp'
         MDLabel:
-            text: 'Измерьте пульс в течение 15 секунд'
+            text: 'Шаг 4 из 6'
+            halign: 'center'
+            font_size: "16sp"
+        MDLabel:
+            text: 'Измерьте пульс в течение 15 секунд. \n Результат запишите в соответствующее поле.'
             halign: 'center'
         Countdown:
             id: countdown1
@@ -115,6 +155,10 @@
         padding: '8sp'
         spacing: '8sp'
         MDLabel:
+            text: 'Шаг 5 из 6'
+            halign: 'center'
+            font_size: "16sp"
+        MDLabel:
             text: 'Отдохните 30 секунд'
             halign: 'center'
         MDRaisedButton:
@@ -133,6 +177,10 @@
         orientation: 'vertical'
         padding: '8sp'
         spacing: '8sp'
+        MDLabel:
+            text: 'Шаг 6 из 6'
+            halign: 'center'
+            font_size: "16sp"
         MDLabel:
             text: 'Измерьте пульс в течение 15 секунд'
             halign: 'center'
